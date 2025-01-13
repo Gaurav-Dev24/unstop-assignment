@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { InputField } from "./shared/InputField";
 import { Button } from "./shared/Button";
 import Google from "../assets/googleIcon.png";
 import Facebook from "../assets/fbIcon.png";
 import AuthController from "../controllers/AuthController";
 import { useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export const LoginForm = ({ onLoginSuccess }) => {
@@ -62,8 +62,18 @@ export const LoginForm = ({ onLoginSuccess }) => {
 
     return (
         <div className="w-full max-w-md space-y-6 p-6">
-            <ToastContainer />
-            
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
+
             <div className="text-left space-y-2">
                 <h1 className="text-2xl font-semibold">Welcome to</h1>
                 <h2 className="text-2xl font-bold text-[#6358DC]">Unstop</h2>
