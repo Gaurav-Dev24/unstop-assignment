@@ -1,16 +1,24 @@
-const AuthModel = {
-    getCurrentUser: () => {
-        const userStr = localStorage.getItem('user');
-        return userStr ? JSON.parse(userStr) : null;
-    },
+class AuthModel {
+    static getCurrentUser() {
+        const user = localStorage.getItem("user");
+        return user ? JSON.parse(user) : null;
+    }
 
-    setCurrentUser: (user) => {
-        localStorage.setItem('user', JSON.stringify(user));
-    },
+    static setCurrentUser(user) {
+        if (user && typeof user === "object") {
+            localStorage.setItem("user", JSON.stringify(user));
+        } else {
+            throw new Error("Invalid user object");
+        }
+    }
 
-    clearCurrentUser: () => {
-        localStorage.removeItem('user');
-    },
-};
+    static logout() {
+        localStorage.removeItem("user");
+    }
+
+    static isAuthenticated() {
+        return !!this.getCurrentUser();
+    }
+}
 
 export default AuthModel;

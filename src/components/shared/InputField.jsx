@@ -13,14 +13,12 @@ const InputField = forwardRef(
         return (
             <div className="space-y-0">
                 <div className="relative flex items-center bg-gray-50 rounded-lg">
-                    {/* Icon based on input type */}
                     <div className="absolute left-3">
                         {type === "text" && <img src={userIcon} alt="user" /> }
                         {type === "email" && <img src={mailIcon} alt="user" />}
                         {type === "password" && <img src={keyIcon} alt="user" />}
                     </div>
 
-                    {/* Label and Input field */}
                     <div className="flex flex-col w-full">
                         <label className="text-xs text-left text-gray-500 pt-2 px-10">{label}</label>
                         <input
@@ -36,7 +34,6 @@ const InputField = forwardRef(
                         />
                     </div>
 
-                    {/* Password visibility toggle */}
                     {isPassword && (
                         <button
                             type="button"
@@ -48,17 +45,14 @@ const InputField = forwardRef(
                     )}
                 </div>
 
-                {/* Error message */}
                 {error && <p className="text-xs text-red-500">{error}</p>}
             </div>
         );
     }
 );
 
-// Set display name for the InputField component
 InputField.displayName = "InputField";
 
-// PropTypes validation for the props
 InputField.propTypes = {
     label: PropTypes.string.isRequired,
     error: PropTypes.string,

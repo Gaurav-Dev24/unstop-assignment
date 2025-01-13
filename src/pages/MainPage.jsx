@@ -1,11 +1,13 @@
 import React from 'react';
-import { ProfileCard } from '../components/shared/ProfileCard'; // Assuming ProfileCard is in the same path
+import { ProfileCard } from '../components/shared/ProfileCard';
+import AuthModel from '../models/AuthModel';
 
 const MainPage = () => {
-    const handleLogout = () => {
-        // Add logout logic here
-        console.log('Logging out...');
-    };
+    const userData = AuthModel.getCurrentUser();
+
+    if (!userData) {
+        return <div>User is not logged in</div>;
+    }
 
     return (
         <div className="min-h-screen bg-gray-50">
@@ -17,11 +19,14 @@ const MainPage = () => {
 
                 <div className="flex justify-center">
                     <ProfileCard
-                        name="Michael Dam"
-                        email="michael@gmail.com"
-                        gender="female"
-                        imageUrl="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-11%20134314-p47X0Y0Dwibh7TWEvDcI1oj4z2Cr23.png"
-                        onLogout={handleLogout}
+                        name={`${userData.firstName} ${userData.lastName}`}
+                        email={userData.email}
+                        gender={userData.gender}
+                        imageUrl={userData.image}
+                        onLogout={() => {
+                            AuthModel.logout();
+                            window.location.reload();
+                        }}
                     />
                 </div>
             </div>

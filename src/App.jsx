@@ -1,14 +1,14 @@
 import React from 'react';
-import './App.css';
-import LoginPage from "./pages/LoginPage";
+import AppRoutes from "./routes/AppRoutes";
 
-function App() {
 
+const App = () => {
   return (
-    <>
-      <LoginPage />
-    </>
-  )
-}
+      <div className="App">
+          <AppRoutes />
+      </div>
+  );
+};
+
 
 export default App

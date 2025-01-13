@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { cn } from "../../utils/cn"; // Utility function for conditional classNames
+import { cn } from "../../utils/cn";
 
 const Button = ({
     children,
@@ -27,7 +27,6 @@ const Button = ({
     );
 };
 
-// PropTypes validation for props
 Button.propTypes = {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
